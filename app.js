@@ -21,7 +21,6 @@ app.get("/matricula", async (req, res) => {
 
   if (!curso || !nome) return res.status(400).send("Faltam parâmetros");
 
-  // searchSchema.validate(); ~Acho que pode remover essa linha
   const validation = searchSchema.validate(req.query, { abortEarly: true });
   if (validation.error) return res.status(422).send("Erro de validação");
 
