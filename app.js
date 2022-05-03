@@ -6,6 +6,8 @@ import express, { json } from "express";
 const app = express();
 app.use(json());
 app.use(cors());
+dotenv.config();
+const PORT = process.env.PORT || 5000;
 
 // talvez eu possa colocar isso no mongoDB
 let cursos = [
@@ -43,7 +45,7 @@ app.get("/matricula", async (req, res) => {
     .catch((err) => res.send(err));
 });
 
-app.listen(5000, () => console.log("Servidor rodando na porta 5000."));
+app.listen(PORT, () => console.log("Servidor rodando na porta 5000."));
 
 function getURL(idCurso) {
   return `https://sigaa.ufpb.br/sigaa/public/curso/alunos.jsf?lc=pt_BR&id=${idCurso}`;
